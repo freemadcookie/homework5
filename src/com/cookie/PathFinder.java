@@ -28,7 +28,7 @@ public class PathFinder {
         return getMinByPrice(filteredTrans);
     }
 
-    //находит минимальный по затратам транспорт
+    //находит минимальный по затратам транспорт 
     private Transport getMinByPrice(List<Transport> transports)
     {
         return transports
