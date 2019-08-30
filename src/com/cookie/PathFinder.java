@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 public class PathFinder {
 
     public Transport getOptimalTransport(DeliveryTask deliveryTask, List<Transport> transports) {
-        //необходимо для проверки вместимости груза
+        //РЅРµРѕР±С…РѕРґРёРјРѕ РґР»СЏ РїСЂРѕРІРµСЂРєРё РІРјРµСЃС‚РёРјРѕСЃС‚Рё РіСЂСѓР·Р°
         double packageVol = deliveryTask.getVolume();
-        //выбираем доступные пути доставки
+        //РІС‹Р±РёСЂР°РµРј РґРѕСЃС‚СѓРїРЅС‹Рµ РїСѓС‚Рё РґРѕСЃС‚Р°РІРєРё
         List<Route> routes = deliveryTask.getRoutes();
 
-        //отфильтровываем доступный транспорт по доступным RouteType'ам, а также проверяем вмещается ли груз
+        //РѕС‚С„РёР»СЊС‚СЂРѕРІС‹РІР°РµРј РґРѕСЃС‚СѓРїРЅС‹Р№ С‚СЂР°РЅСЃРїРѕСЂС‚ РїРѕ РґРѕСЃС‚СѓРїРЅС‹Рј RouteType'Р°Рј, Р° С‚Р°РєР¶Рµ РїСЂРѕРІРµСЂСЏРµРј РІРјРµС‰Р°РµС‚СЃСЏ Р»Рё РіСЂСѓР·
         List<Transport> filteredTrans =
                 transports.stream()
                         .filter (transport -> routes.stream()
@@ -24,11 +24,11 @@ public class PathFinder {
                                                 packageVol<= transport.getVolume()))
                         .collect(Collectors.toList());
 
-        //возвращаем оптимальный транспорт
+        //РІРѕР·РІСЂР°С‰Р°РµРј РѕРїС‚РёРјР°Р»СЊРЅС‹Р№ С‚СЂР°РЅСЃРїРѕСЂС‚
         return getMinByPrice(filteredTrans);
     }
 
-    //находит минимальный по затратам транспорт
+    //РЅР°С…РѕРґРёС‚ РјРёРЅРёРјР°Р»СЊРЅС‹Р№ РїРѕ Р·Р°С‚СЂР°С‚Р°Рј С‚СЂР°РЅСЃРїРѕСЂС‚
     private Transport getMinByPrice(List<Transport> transports)
     {
         return transports
