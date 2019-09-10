@@ -6,6 +6,7 @@ import com.cookie.entity.Route;
 import com.cookie.entity.RouteType;
 import com.cookie.entity.Transport;
 
+import org.junit.Test;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -28,7 +29,6 @@ public class TestPathFinder {
     private List<Transport> getAvailableTransport() {
         return Arrays.asList(GAZelle, Plane, Tanker, Train, SemiTrailerTruck);
     }
-
     @ParameterizedTest
     @ArgumentsSource(TestGetOptimalTransportArguments.class)
     void testGetOptimalTransport(DeliveryTask deliveryTask, Transport expected) {
